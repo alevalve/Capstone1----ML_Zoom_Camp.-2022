@@ -12,7 +12,21 @@ These are the following variables:
   "competition": (competition of the match)
 
 Local deployment pip install pipenv pipenv install numpy pandas seaborn bentoml==1.0.7 scikit-learn==1.1.3 xgboost==1.7.1 pydantic==1.10.2 Enter shell.
-To open the notebook.ipynb and see all the models pipenv shell For the following you need to run train.py pipenv run python train.py Then, get the service running on localhost pipenv run bentoml serve service.py:svc Click on 'Try it out' and make accurate predictions that is guaranteed to blow the minds of your pals. Optional: Run locust to test server, make sure you have installed it pipenv install locust pipenv run locust -H http://localhost:3000 and check it out on browser. For production deployment with BentoML You need to have Docker installed.
+To open the notebook.ipynb and see all the models pipenv shell For the following you need to run train.py pipenv run python train.py Then, get the service running on localhost pipenv run bentoml serve service.py:svc Click on 'Try it out' and make predictions. 
+Optional: Run locust to test server, make sure you have installed it pipenv install locust pipenv run locust -H http://localhost:3000 and check it out on browser. For production deployment with BentoML You need to have Docker installed.
+
+For the model I used an Xgboost with the next params:
+
+{'colsample_bytree': 0.5,
+ 'learning_rate': 0.1,
+ 'max_depth': 9,
+ 'min_child_weight': 1,
+ 'n_estimators': 100,
+ 'num_class': 3,
+ 'objective': 'multi:softmax',
+ 'subsample': 0.5}
+ 
+The model throwed an accuracy of 85% on the test dataset.
 
 First we need to build the bento with
 
